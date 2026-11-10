@@ -1,0 +1,58 @@
+AntennaPod DLNA
+===============
+
+Dies ist eine INOFFIZIELLE, veränderte Fassung von AntennaPod
+(https://github.com/AntennaPod/AntennaPod). Sie wird nicht vom AntennaPod-Team
+erstellt, geprüft oder unterstützt. Fehler dieser Fassung bitte nicht bei
+AntennaPod melden, sondern unter
+https://github.com/andreasbartelmess/antennapod-dlna/issues
+
+"AntennaPod" sowie Name und Logo gehören den jeweiligen Rechteinhabern des
+AntennaPod-Projekts. Copyright des Originalcodes: die AntennaPod-Mitwirkenden
+(siehe CONTRIBUTORS.md).
+
+Lizenz
+------
+AntennaPod und diese veränderte Fassung stehen unter der GNU General Public
+License, Version 3 (siehe LICENSE). Der vollständige Quellcode dieser Fassung
+liegt im Branch "dlna" von
+https://github.com/andreasbartelmess/antennapod-dlna
+
+Änderungen gegenüber AntennaPod (GPLv3 Abschnitt 5a)
+----------------------------------------------------
+Erstmals geändert am 2026-11-10 von Andreas Bartelmess, aufbauend auf
+AntennaPod 3.12.3. Die Änderungen werden automatisch auf jedes neue
+AntennaPod-Release übertragen; die Git-Historie des Branches "dlna" zeigt jede
+einzelne Änderung mit Datum.
+
+Wiedergabe auf DLNA/UPnP-Renderern in der F-Droid-Variante ("free"-Flavor):
+
+  Ersetzt (vorher leere Chromecast-Platzhalter):
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/CastEnabledActivity.java
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/CastPlayerWrapper.java
+
+  Geändert:
+    playback/cast/build.gradle   (Material-Components-Bibliothek für die free-Variante)
+
+  Neu:
+    playback/cast/src/free/AndroidManifest.xml
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/DlnaClient.java
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/DlnaDevice.java
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/DlnaDiscovery.java
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/DlnaPlayer.java
+    playback/cast/src/free/java/de/danoeh/antennapod/playback/cast/DlnaSession.java
+    playback/cast/src/free/res/** (Symbole, Layouts, Texte des Geräte-Dialogs)
+    dlna-update.sh, NOTICE
+
+Beim automatischen Build werden außerdem versionName und versionCode in
+app/build.gradle gesetzt (Kennzeichnung "<Version>-dlna.<n>").
+
+Fremde Bestandteile
+-------------------
+Die Symbole in playback/cast/src/free/res/drawable/ic_dlna_*.xml basieren auf
+Material Icons von Google, lizenziert unter der Apache License 2.0
+(https://www.apache.org/licenses/LICENSE-2.0),
+Quelle: https://github.com/google/material-design-icons
+
+"DLNA" und "UPnP" werden nur beschreibend für die unterstützten Protokolle
+verwendet. Diese Fassung ist nicht DLNA-zertifiziert.

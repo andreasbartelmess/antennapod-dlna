@@ -1,3 +1,4 @@
+// AntennaPod DLNA (inoffiziell): gegenüber AntennaPod verändert am 2026-11-10, siehe NOTICE. GPL-3.0.
 package de.danoeh.antennapod.playback.cast;
 
 import android.content.ComponentName;
