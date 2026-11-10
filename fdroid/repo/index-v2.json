@@ -14,7 +14,7 @@
       }
     },
     "address": "https://andreasbartelmess.github.io/antennapod-dlna/fdroid/repo",
-    "timestamp": 1794351919000,
+    "timestamp": 1794352824000,
     "categories": {
       "Multimedia": {
         "name": {
@@ -31,7 +31,7 @@
           "Multimedia"
         ],
         "issueTracker": "https://github.com/andreasbartelmess/antennapod-dlna/issues",
-        "lastUpdated": 1794351919000,
+        "lastUpdated": 1794352824000,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/andreasbartelmess/antennapod-dlna/tree/dlna",
         "webSite": "https://antennapod.org",
@@ -48,6 +48,71 @@
         "preferredSigner": "18da0ad6797b46dd6d730ba358dd752a7c5eedc220fa32f3f9eb8528cbf7cc47"
       },
       "versions": {
+        "e64afb60b6c7637d62eb072e96474c94bad70608d81f8ef0f3445474aec0641c": {
+          "added": 1794352824000,
+          "file": {
+            "name": "/AntennaPod-3.12.3-dlna.2.apk",
+            "sha256": "e64afb60b6c7637d62eb072e96474c94bad70608d81f8ef0f3445474aec0641c",
+            "size": 17826307
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "3.12.3-dlna.2",
+            "versionCode": 3120397,
+            "usesSdk": {
+              "minSdkVersion": 23,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "18da0ad6797b46dd6d730ba358dd752a7c5eedc220fa32f3f9eb8528cbf7cc47"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.ACCESS_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              },
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.ACCESS_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.BLUETOOTH"
+              },
+              {
+                "name": "android.permission.VIBRATE"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+              },
+              {
+                "name": "de.danoeh.antennapod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        },
         "954019a8f4f56d01538339907fc9003b4b56476e055b82048b5e1173125e249b": {
           "added": 1794351919000,
           "file": {

@@ -9,7 +9,7 @@
     "--delete-unknown"
   ],
   "disabled": [],
-  "endTimestamp": 1794351922921,
+  "endTimestamp": 1794352827207,
   "failedBuilds": {},
   "jarsigner": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64/bin/jarsigner",
   "keytool": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64/bin/keytool",
@@ -23,14 +23,14 @@
     "de.danoeh.antennapod"
   ],
   "stages": {
-    "delete_disabled_builds": 1794351918086,
-    "index.make repo": 1794351919733,
-    "prepare_apps repo": 1794351919732,
-    "process_apks": 1794351918087,
-    "read_added_date_from_all_apks": 1794351919732,
-    "remove_apks": 1794351919731,
-    "scan_repo_files": 1794351919731
+    "delete_disabled_builds": 1794352823297,
+    "index.make repo": 1794352824861,
+    "prepare_apps repo": 1794352824860,
+    "process_apks": 1794352823298,
+    "read_added_date_from_all_apks": 1794352824860,
+    "remove_apks": 1794352824859,
+    "scan_repo_files": 1794352824858
   },
-  "startTimestamp": 1794351917000,
+  "startTimestamp": 1794352823000,
   "subcommand": "update"
 }
