@@ -24,7 +24,7 @@ done
 git diff --quiet && git diff --cached --quiet || { echo "Ungesicherte Aenderungen – erst committen"; exit 1; }
 
 if [ "$BUILD_ONLY" = 0 ]; then
-  git fetch --quiet --tags origin
+  git fetch --quiet --tags upstream
   OLD=$(git describe --tags --abbrev=0 --match '[0-9]*.[0-9]*.[0-9]*' --exclude '*-*' HEAD)
   NEW=$(git tag -l '[0-9]*.[0-9]*.[0-9]*' | grep -v -- - | sort -V | tail -1)
   if [ "$OLD" = "$NEW" ]; then
