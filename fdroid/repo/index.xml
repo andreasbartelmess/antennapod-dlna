@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fdroid>
+	<repo icon="icon.png" name="AntennaPod DLNA" pubkey="308204f4308202dca0030201020209008f519c57205a5293300d06092a864886f70d01010c05003027312530230603550403131c416e74656e6e61506f6420444c4e4120462d44726f69642d5265706f3020170d3236313131303232353535385a180f32313236313031373232353535385a3027312530230603550403131c416e74656e6e61506f6420444c4e4120462d44726f69642d5265706f30820222300d06092a864886f70d01010105000382020f003082020a0282020100bcea6bd98fca06df9841683462c311e5ff02631ca3014d08cf173b1c486312dc44533864cab2feabc2b9c72ef357f392ef148f8ed9fc229e618ad44c89bf8d52a6e644b864680837a2212a36c0467bb72ff31c35f5dacf23b3a5391593c414b88d442b4346563c8f97180ef756cd55d97afcb06a08c9572c7a8f4b6972ff9997635ec9f09f607a843c9ede787015983e4370ee23b61bfe06f81a1d15e37ff5c80d54b2b94daec6bdf53168d3581766e2333a06eac601288f065b23a41b76227f4e4dbe6fd13350c2c4b8b9f8e6e9611e5b910d0568fd4281aae3b18a09f4edcf5004a9a27d57483a75fb0ac8cf23a31d7e0d83ac594deef6b18f562c56ae74cae88ba0c29b6763753be98d6e589940892f4487700b70aff4de07361a6ac894756eb3a58340c19cbeeb1277b33b0e3beffbfdd071bcaf5c35f378241fc902ee5f0a6d21ca5e4eb9454da0829260900766a04a1e4ff7d4a03a1245c51f9af810149a29c990694c5c255eb72b359769d024db11a66afe92ca69c2ff6a5b0b1d041c4dafece180c50f70bce9fc2c89582a0b94a814f6d50ba6cc07847b538d64970eec1aa6e27767655873b69788cc7dee031d7aef1007a48b82b22e73f780e4ae29fac0026c0f95d2d22c45db88c7112423b3cb05038b1d669d3f95c952c8536993b7a78c38362e660209734711ecd913004f5539ae1046984e7cc44db0b5a5e7b30203010001a321301f301d0603551d0e04160414439930611641febf959fb46e143de1509d1a837e300d06092a864886f70d01010c0500038202010077c417f78a81023f43c72a3762dbfe9319844cc49ddd961cf1e3bececfe516f04b1c5728d62aaa918a607acdb99d8f11da05df3301ff56eefe228d2283947fce1e0aa9809b7fb3d994db473b420f7415333373d9e9bcaeb3693ec442fe20fb3acef04abd83f5707421d091ae143f709a69345bc8e845b1040eeada4b9c33f17e61dba9f729c1becd0cf5f1aead299db53189d6f1bcb17e72afd1a4e89709e80fb477bfb4fd92deecfe28e1f08b4ccdd25841d8c96afc26bddf51a71b2a06844ef9ee1ceb5d5d53009ed4f96bf9f1f6556d343667c88ce920dfe2390515656a9e45d51bcae6f68ee4cc8f9808ef43e91417a538954139c073b02edd21c7fa4fb3f4468c823e337cb6c75dfd10cabf6615549bb46438b279216a47dd5a700a84f56b64d1a176099b71f6d9e65bf8525c609f3a9c4b5452f077622a8c2c5fdc1fc0f003cfbbcec2b05135fa383473ff321bfb4987ae0b69de6d3d9732b9daab20e3d7186a4568826fbecaccbb5b9f20ee967db45b04d749dfe9a6d71998e15af32f0159dbb74f99fd1039a29ad567e7941b118144dedbde4f82b62578933a4f9e2c163cfd7fe250276f53624dea71ff947d11e76d0d3ad0de89dba422fd41f7d0de84c06d6ebfb3b1e8da2134fd1baf1b0aaa5adae4a9f99db96689ce6455ca9768bf35d084ec0d925176be111abaa29e950949c5e55390fdf0f070890ead35f351" timestamp="1794351919" url="https://andreasbartelmess.github.io/antennapod-dlna/fdroid/repo" version="20002">
+		<description>AntennaPod mit DLNA-Wiedergabe, automatisch aus github.com/andreasbartelmess/antennapod-dlna gebaut.</description>
+	</repo>
+	<application id="de.danoeh.antennapod">
+		<id>de.danoeh.antennapod</id>
+		<added>2026-11-10</added>
+		<lastupdated>2026-11-10</lastupdated>
+		<name>AntennaPod (DLNA)</name>
+		<summary>Podcast-Manager mit Wiedergabe auf DLNA-Geräten</summary>
+		<desc>AntennaPod in der F-Droid-Ausgabe, ergänzt um Wiedergabe auf DLNA/UPnP-Renderern.
+Im Player auf das Cast-Symbol tippen und ein Gerät im WLAN wählen.
+
+Automatisch gebaut aus dem jeweils neuesten stabilen AntennaPod-Release.
+Kein offizielles AntennaPod-Projekt.</desc>
+		<license>GPL-3.0-only</license>
+		<categories>Multimedia</categories>
+		<category>Multimedia</category>
+		<web>https://antennapod.org</web>
+		<source>https://github.com/andreasbartelmess/antennapod-dlna/tree/dlna</source>
+		<tracker>https://github.com/andreasbartelmess/antennapod-dlna/issues</tracker>
+		<author>AntennaPod-Team, DLNA-Erweiterung von andreasbartelmess</author>
+		<marketversion></marketversion>
+		<marketvercode>3120395</marketvercode>
+		<package>
+			<version>3.12.3-dlna.1</version>
+			<versioncode>3120395</versioncode>
+			<apkname>AntennaPod-3.12.3-dlna.1.apk</apkname>
+			<hash type="sha256">954019a8f4f56d01538339907fc9003b4b56476e055b82048b5e1173125e249b</hash>
+			<size>17826312</size>
+			<sdkver>23</sdkver>
+			<targetSdkVersion>36</targetSdkVersion>
+			<added>2026-11-10</added>
+			<sig>a047a2c6d39437f3162290d77cbf43ff</sig>
+			<permissions>ACCESS_NETWORK_STATE,ACCESS_WIFI_STATE,BLUETOOTH,CHANGE_WIFI_MULTICAST_STATE,FOREGROUND_SERVICE,FOREGROUND_SERVICE_MEDIA_PLAYBACK,INTERNET,POST_NOTIFICATIONS,RECEIVE_BOOT_COMPLETED,VIBRATE,WAKE_LOCK,de.danoeh.antennapod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</permissions>
+			<nativecode>arm64-v8a,armeabi-v7a,x86,x86_64</nativecode>
+		</package>
+	</application>
+</fdroid>

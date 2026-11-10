@@ -1,0 +1,17 @@
+Categories:
+  - Multimedia
+License: GPL-3.0-only
+AuthorName: AntennaPod-Team, DLNA-Erweiterung von andreasbartelmess
+WebSite: https://antennapod.org
+SourceCode: https://github.com/andreasbartelmess/antennapod-dlna/tree/dlna
+IssueTracker: https://github.com/andreasbartelmess/antennapod-dlna/issues
+Name: AntennaPod (DLNA)
+Summary: Podcast-Manager mit Wiedergabe auf DLNA-Geräten
+Description: |-
+  AntennaPod in der F-Droid-Ausgabe, ergänzt um Wiedergabe auf DLNA/UPnP-Renderern.
+  Im Player auf das Cast-Symbol tippen und ein Gerät im WLAN wählen.
+
+  Automatisch gebaut aus dem jeweils neuesten stabilen AntennaPod-Release.
+  Kein offizielles AntennaPod-Projekt.
+AutoUpdateMode: None
+UpdateCheckMode: None

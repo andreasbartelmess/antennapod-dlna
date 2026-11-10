@@ -1,0 +1,119 @@
+{
+  "repo": {
+    "name": {
+      "en-US": "AntennaPod DLNA"
+    },
+    "description": {
+      "en-US": "AntennaPod mit DLNA-Wiedergabe, automatisch aus github.com/andreasbartelmess/antennapod-dlna gebaut."
+    },
+    "icon": {
+      "en-US": {
+        "name": "/icons/icon.png",
+        "sha256": "911f01e0861abc8f6deddea6842a94c790f55550b0a91794489d21cf7f452c3c",
+        "size": 991
+      }
+    },
+    "address": "https://andreasbartelmess.github.io/antennapod-dlna/fdroid/repo",
+    "timestamp": 1794351919000,
+    "categories": {
+      "Multimedia": {
+        "name": {
+          "en-US": "Multimedia"
+        }
+      }
+    }
+  },
+  "packages": {
+    "de.danoeh.antennapod": {
+      "metadata": {
+        "added": 1794351919000,
+        "categories": [
+          "Multimedia"
+        ],
+        "issueTracker": "https://github.com/andreasbartelmess/antennapod-dlna/issues",
+        "lastUpdated": 1794351919000,
+        "license": "GPL-3.0-only",
+        "sourceCode": "https://github.com/andreasbartelmess/antennapod-dlna/tree/dlna",
+        "webSite": "https://antennapod.org",
+        "authorName": "AntennaPod-Team, DLNA-Erweiterung von andreasbartelmess",
+        "name": {
+          "en-US": "AntennaPod (DLNA)"
+        },
+        "summary": {
+          "en-US": "Podcast-Manager mit Wiedergabe auf DLNA-Geräten"
+        },
+        "description": {
+          "en-US": "AntennaPod in der F-Droid-Ausgabe, ergänzt um Wiedergabe auf DLNA/UPnP-Renderern.\nIm Player auf das Cast-Symbol tippen und ein Gerät im WLAN wählen.\n\nAutomatisch gebaut aus dem jeweils neuesten stabilen AntennaPod-Release.\nKein offizielles AntennaPod-Projekt."
+        },
+        "preferredSigner": "18da0ad6797b46dd6d730ba358dd752a7c5eedc220fa32f3f9eb8528cbf7cc47"
+      },
+      "versions": {
+        "954019a8f4f56d01538339907fc9003b4b56476e055b82048b5e1173125e249b": {
+          "added": 1794351919000,
+          "file": {
+            "name": "/AntennaPod-3.12.3-dlna.1.apk",
+            "sha256": "954019a8f4f56d01538339907fc9003b4b56476e055b82048b5e1173125e249b",
+            "size": 17826312
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "3.12.3-dlna.1",
+            "versionCode": 3120395,
+            "usesSdk": {
+              "minSdkVersion": 23,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "18da0ad6797b46dd6d730ba358dd752a7c5eedc220fa32f3f9eb8528cbf7cc47"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.ACCESS_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              },
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.ACCESS_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.BLUETOOTH"
+              },
+              {
+                "name": "android.permission.VIBRATE"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+              },
+              {
+                "name": "de.danoeh.antennapod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

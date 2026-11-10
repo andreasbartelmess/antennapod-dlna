@@ -1,0 +1,36 @@
+{
+  "/etc/issue.net": "Ubuntu 26.04.1 LTS",
+  "antiFeatures": {},
+  "apksigner": "/usr/bin/apksigner",
+  "archivePolicy0": [],
+  "commandLine": [
+    "/usr/bin/fdroid update",
+    "--pretty",
+    "--delete-unknown"
+  ],
+  "disabled": [],
+  "endTimestamp": 1794351922921,
+  "failedBuilds": {},
+  "jarsigner": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64/bin/jarsigner",
+  "keytool": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64/bin/keytool",
+  "needsUpdate": [
+    "de.danoeh.antennapod"
+  ],
+  "noPackages": [
+    "de.danoeh.antennapod"
+  ],
+  "noUpdateCheck": [
+    "de.danoeh.antennapod"
+  ],
+  "stages": {
+    "delete_disabled_builds": 1794351918086,
+    "index.make repo": 1794351919733,
+    "prepare_apps repo": 1794351919732,
+    "process_apks": 1794351918087,
+    "read_added_date_from_all_apks": 1794351919732,
+    "remove_apks": 1794351919731,
+    "scan_repo_files": 1794351919731
+  },
+  "startTimestamp": 1794351917000,
+  "subcommand": "update"
+}

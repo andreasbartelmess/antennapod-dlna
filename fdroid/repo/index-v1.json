@@ -1,0 +1,107 @@
+{
+  "repo": {
+    "timestamp": 1794351919000,
+    "version": 20002,
+    "name": "AntennaPod DLNA",
+    "icon": "icon.png",
+    "address": "https://andreasbartelmess.github.io/antennapod-dlna/fdroid/repo",
+    "description": "AntennaPod mit DLNA-Wiedergabe, automatisch aus github.com/andreasbartelmess/antennapod-dlna gebaut."
+  },
+  "requests": {
+    "install": [],
+    "uninstall": []
+  },
+  "apps": [
+    {
+      "authorName": "AntennaPod-Team, DLNA-Erweiterung von andreasbartelmess",
+      "categories": [
+        "Multimedia"
+      ],
+      "suggestedVersionCode": "3120395",
+      "description": "AntennaPod in der F-Droid-Ausgabe, erg\u00e4nzt um Wiedergabe auf DLNA/UPnP-Renderern.\nIm Player auf das Cast-Symbol tippen und ein Ger\u00e4t im WLAN w\u00e4hlen.\n\nAutomatisch gebaut aus dem jeweils neuesten stabilen AntennaPod-Release.\nKein offizielles AntennaPod-Projekt.",
+      "issueTracker": "https://github.com/andreasbartelmess/antennapod-dlna/issues",
+      "license": "GPL-3.0-only",
+      "name": "AntennaPod (DLNA)",
+      "sourceCode": "https://github.com/andreasbartelmess/antennapod-dlna/tree/dlna",
+      "summary": "Podcast-Manager mit Wiedergabe auf DLNA-Ger\u00e4ten",
+      "webSite": "https://antennapod.org",
+      "added": 1794351919000,
+      "packageName": "de.danoeh.antennapod",
+      "lastUpdated": 1794351919000
+    }
+  ],
+  "packages": {
+    "de.danoeh.antennapod": [
+      {
+        "added": 1794351919000,
+        "apkName": "AntennaPod-3.12.3-dlna.1.apk",
+        "hash": "954019a8f4f56d01538339907fc9003b4b56476e055b82048b5e1173125e249b",
+        "hashType": "sha256",
+        "minSdkVersion": 23,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "de.danoeh.antennapod",
+        "sig": "a047a2c6d39437f3162290d77cbf43ff",
+        "signer": "18da0ad6797b46dd6d730ba358dd752a7c5eedc220fa32f3f9eb8528cbf7cc47",
+        "size": 17826312,
+        "targetSdkVersion": 36,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            null
+          ],
+          [
+            "de.danoeh.antennapod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 3120395,
+        "versionName": "3.12.3-dlna.1"
+      }
+    ]
+  }
+}
