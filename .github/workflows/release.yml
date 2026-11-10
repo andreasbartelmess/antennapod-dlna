@@ -122,3 +122,66 @@ jobs:
           gh release create "$TAG" "AntennaPod-$TAG.apk" \
             --title "AntennaPod $BASE + DLNA ($TAG)" \
             --notes "AntennaPod [$BASE](https://github.com/AntennaPod/AntennaPod/releases/tag/$BASE) mit DLNA-Wiedergabe. Automatisch gebaut aus Branch \`dlna\` ($(git rev-parse --short HEAD))."
+
+      - name: F-Droid-Repo aktualisieren
+        if: steps.check.outputs.build == 'true'
+        env:
+          FDROID_KEYSTORE_BASE64: ${{ secrets.FDROID_KEYSTORE_BASE64 }}
+          FDROID_STORE_PASSWORD: ${{ secrets.FDROID_STORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          TAG=${{ steps.check.outputs.tag }}
+          REPO_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/fdroid/repo"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fdroidserver >/dev/null
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git fetch -q origin gh-pages:gh-pages
+            git worktree add -q pages gh-pages
+          else
+            git worktree add -q --orphan -b gh-pages pages
+            touch pages/.nojekyll
+          fi
+          mkdir -p pages/fdroid/repo pages/fdroid/metadata
+          cp "AntennaPod-$TAG.apk" pages/fdroid/repo/
+          ls -1t pages/fdroid/repo/*.apk | tail -n +4 | xargs -r rm -f
+          cd pages/fdroid
+          cat > metadata/de.danoeh.antennapod.yml <<META
+          Categories:
+            - Multimedia
+          License: GPL-3.0-only
+          AuthorName: AntennaPod-Team, DLNA-Erweiterung von ${GITHUB_REPOSITORY_OWNER}
+          WebSite: https://antennapod.org
+          SourceCode: https://github.com/${GITHUB_REPOSITORY}/tree/dlna
+          IssueTracker: https://github.com/${GITHUB_REPOSITORY}/issues
+          Name: AntennaPod (DLNA)
+          Summary: Podcast-Manager mit Wiedergabe auf DLNA-Geräten
+          Description: |-
+            AntennaPod in der F-Droid-Ausgabe, ergänzt um Wiedergabe auf DLNA/UPnP-Renderern.
+            Im Player auf das Cast-Symbol tippen und ein Gerät im WLAN wählen.
+
+            Automatisch gebaut aus dem jeweils neuesten stabilen AntennaPod-Release.
+            Kein offizielles AntennaPod-Projekt.
+          AutoUpdateMode: None
+          UpdateCheckMode: None
+          META
+          echo "$FDROID_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/fdroid.keystore"
+          umask 077
+          cat > config.yml <<CONF
+          repo_url: $REPO_URL
+          repo_name: AntennaPod DLNA
+          repo_description: AntennaPod mit DLNA-Wiedergabe, automatisch aus github.com/${GITHUB_REPOSITORY} gebaut.
+          archive_older: 0
+          repo_keyalias: fdroid-repo
+          keystore: $RUNNER_TEMP/fdroid.keystore
+          keystorepass: $FDROID_STORE_PASSWORD
+          keypass: $FDROID_STORE_PASSWORD
+          keydname: CN=AntennaPod DLNA F-Droid-Repo
+          sdk_path: $ANDROID_HOME
+          CONF
+          fdroid update --pretty --delete-unknown
+          rm -f config.yml "$RUNNER_TEMP/fdroid.keystore"
+          rm -rf tmp
+          cd ../..
+          git -C pages add -A
+          git -C pages commit -q -m "F-Droid-Repo: $TAG"
+          git -C pages push -q origin gh-pages

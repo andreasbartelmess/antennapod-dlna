@@ -26,13 +26,17 @@ Der Workflow [`release.yml`](.github/workflows/release.yml) läuft täglich:
 Bei einem Konflikt schlägt der Workflow fehl (GitHub schickt eine Mail); die bisherige Version bleibt gültig.
 Manuell starten: *Actions → AntennaPod DLNA bauen → Run workflow*.
 
-Benötigte Secrets: `KEYSTORE_BASE64` (PKCS12-Keystore, Alias `antennapod-dlna`), `STORE_PASSWORD`.
+Benötigte Secrets: `KEYSTORE_BASE64` (PKCS12-Keystore, Alias `antennapod-dlna`), `STORE_PASSWORD`,
+`FDROID_KEYSTORE_BASE64` (Alias `fdroid-repo`), `FDROID_STORE_PASSWORD`.
 
 ## Auf dem Gerät aktuell halten
 
-Mit [Obtainium](https://github.com/ImranR98/Obtainium) (F-Droid): *App hinzufügen* →
-URL dieses Repos eintragen. Obtainium prüft regelmäßig auf neue Releases, meldet Updates
-und installiert sie.
+**F-Droid:** Der Workflow pflegt ein eigenes F-Droid-Repo auf GitHub Pages:
+<https://andreasbartelmess.github.io/antennapod-dlna/> → „In F-Droid hinzufügen“.
+Danach in F-Droid bei AntennaPod dieses Repo als bevorzugte Quelle wählen
+(das offizielle F-Droid-Repo bietet AntennaPod mit anderer Signatur an).
+
+Alternativ [Obtainium](https://github.com/ImranR98/Obtainium) mit der URL dieses Repos.
 
 ## Bedienung
 
