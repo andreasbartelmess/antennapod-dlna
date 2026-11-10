@@ -100,6 +100,10 @@ jobs:
           TAG=${{ steps.check.outputs.tag }}
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
           sed -i -E "s/^( *versionName \").*(\")/\1$TAG\2/" app/build.gradle
+          CODE=$(sed -nE 's/^ *versionCode ([0-9]+).*/\1/p' app/build.gradle | head -1)
+          N=${TAG##*-dlna.}
+          sed -i -E "s/^( *versionCode )[0-9]+/\1$((CODE + N))/" app/build.gradle
+          grep -nE "versionCode|versionName" app/build.gradle | head -2
           ./gradlew --console=plain :app:assembleFreeRelease \
             -PreleaseStoreFile="$RUNNER_TEMP/release.keystore" \
             -PreleaseStorePassword="$STORE_PASSWORD" \
