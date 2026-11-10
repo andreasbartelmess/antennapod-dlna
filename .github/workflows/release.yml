@@ -65,7 +65,7 @@ jobs:
           BASE=${{ steps.sync.outputs.base }}
           HEAD_SHA=$(git rev-parse HEAD)
           LAST_SHA=""
-          LAST_TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName' || true)
+          LAST_TAG=$(gh release list -R "$GITHUB_REPOSITORY" --limit 1 --json tagName -q '.[0].tagName' || true)
           if [ "$LAST_TAG" != "" ] && git rev-parse -q --verify "refs/tags/$LAST_TAG" >/dev/null; then
             LAST_SHA=$(git rev-list -n1 "refs/tags/$LAST_TAG")
           fi
@@ -119,7 +119,7 @@ jobs:
           BASE=${{ steps.sync.outputs.base }}
           git tag "$TAG" HEAD
           git push origin "$TAG"
-          gh release create "$TAG" "AntennaPod-$TAG.apk" \
+          gh release create -R "$GITHUB_REPOSITORY" "$TAG" "AntennaPod-$TAG.apk" \
             --title "AntennaPod $BASE + DLNA ($TAG)" \
             --notes "AntennaPod [$BASE](https://github.com/AntennaPod/AntennaPod/releases/tag/$BASE) mit DLNA-Wiedergabe. Automatisch gebaut aus Branch \`dlna\` ($(git rev-parse --short HEAD))."
 
