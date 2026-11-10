@@ -1,0 +1,124 @@
+name: AntennaPod DLNA bauen
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Auch ohne Aenderung neu bauen und veroeffentlichen
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Branch dlna auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: dlna
+          fetch-depth: 0
+
+      - name: Neuestes AntennaPod-Release uebernehmen
+        id: sync
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/AntennaPod/AntennaPod.git
+          git fetch --quiet --no-tags upstream '+refs/tags/*:refs/upstream-tags/*'
+          NEW=$(git for-each-ref --format='%(refname:lstrip=2)' refs/upstream-tags \
+                | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          OLD=$(cat .dlna-base 2>/dev/null || true)
+          if [ -z "$OLD" ]; then
+            for t in $(git for-each-ref --format='%(refname:lstrip=2)' refs/upstream-tags \
+                       | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -Vr); do
+              if git merge-base --is-ancestor "refs/upstream-tags/$t" HEAD; then OLD=$t; break; fi
+            done
+          fi
+          echo "Basis: $OLD, neuestes Release: $NEW"
+          if [ "$OLD" != "$NEW" ]; then
+            if ! git rebase --onto "refs/upstream-tags/$NEW" "refs/upstream-tags/$OLD" dlna; then
+              git rebase --abort || true
+              echo "::error::Konflikt beim Uebernehmen von AntennaPod $NEW – DLNA-Aenderungen muessen angepasst werden."
+              exit 1
+            fi
+            git push --force-with-lease origin dlna
+          fi
+          echo "base=$NEW" >> "$GITHUB_OUTPUT"
+
+      - name: Pruefen, ob ein neues Release noetig ist
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          BASE=${{ steps.sync.outputs.base }}
+          HEAD_SHA=$(git rev-parse HEAD)
+          LAST_SHA=""
+          LAST_TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName' || true)
+          if [ "$LAST_TAG" != "" ] && git rev-parse -q --verify "refs/tags/$LAST_TAG" >/dev/null; then
+            LAST_SHA=$(git rev-list -n1 "refs/tags/$LAST_TAG")
+          fi
+          if [ "${{ inputs.force }}" != "true" ] && [ "$LAST_SHA" = "$HEAD_SHA" ]; then
+            echo "Keine Aenderung seit $LAST_TAG."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          N=1
+          while git rev-parse -q --verify "refs/tags/$BASE-dlna.$N" >/dev/null; do N=$((N+1)); done
+          echo "tag=$BASE-dlna.$N" >> "$GITHUB_OUTPUT"
+          echo "build=true" >> "$GITHUB_OUTPUT"
+
+      - name: Java 21
+        if: steps.check.outputs.build == 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Gradle-Cache
+        if: steps.check.outputs.build == 'true'
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Signierte APK bauen
+        if: steps.check.outputs.build == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          TAG=${{ steps.check.outputs.tag }}
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+          sed -i -E "s/^( *versionName \").*(\")/\1$TAG\2/" app/build.gradle
+          ./gradlew --console=plain :app:assembleFreeRelease \
+            -PreleaseStoreFile="$RUNNER_TEMP/release.keystore" \
+            -PreleaseStorePassword="$STORE_PASSWORD" \
+            -PreleaseKeyAlias=antennapod-dlna \
+            -PreleaseKeyPassword="$STORE_PASSWORD"
+          git checkout -- app/build.gradle
+          cp app/build/outputs/apk/free/release/app-free-release.apk "AntennaPod-$TAG.apk"
+          rm -f "$RUNNER_TEMP/release.keystore"
+
+      - name: Release veroeffentlichen
+        if: steps.check.outputs.build == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=${{ steps.check.outputs.tag }}
+          BASE=${{ steps.sync.outputs.base }}
+          git tag "$TAG" HEAD
+          git push origin "$TAG"
+          gh release create "$TAG" "AntennaPod-$TAG.apk" \
+            --title "AntennaPod $BASE + DLNA ($TAG)" \
+            --notes "AntennaPod [$BASE](https://github.com/AntennaPod/AntennaPod/releases/tag/$BASE) mit DLNA-Wiedergabe. Automatisch gebaut aus Branch \`dlna\` ($(git rev-parse --short HEAD))."
