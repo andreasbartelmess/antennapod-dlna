@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="dlna_menu_item" type="id" />
+    <string name="dlna_play_on">Play on</string>
+    <string name="dlna_this_device">This device</string>
+    <string name="dlna_this_device_detail">Play on the built-in speaker or headphones</string>
+    <string name="dlna_renderer_detail">DLNA · %1$s</string>
+    <string name="dlna_searching">Searching for DLNA devices…</string>
+    <string name="dlna_no_devices">No DLNA devices found. Is the device on the same Wi-Fi network?</string>
+    <string name="dlna_search_again">Search again</string>
+</resources>

@@ -20,6 +20,7 @@ dependencies {
 
     playApi libs.androidx.mediarouter
     playApi libs.google.play.services.cast.framework
+    freeImplementation libs.google.material
     implementation libs.androidx.media3.exoplayer
     playImplementation libs.androidx.media3.cast
 }

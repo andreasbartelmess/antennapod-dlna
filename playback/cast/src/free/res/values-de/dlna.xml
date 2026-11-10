@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dlna_play_on">Wiedergabe auf</string>
+    <string name="dlna_this_device">Dieses Gerät</string>
+    <string name="dlna_this_device_detail">Lautsprecher oder Kopfhörer dieses Geräts</string>
+    <string name="dlna_renderer_detail">DLNA · %1$s</string>
+    <string name="dlna_searching">Suche nach DLNA-Geräten…</string>
+    <string name="dlna_no_devices">Keine DLNA-Geräte gefunden. Ist das Gerät im selben WLAN?</string>
+    <string name="dlna_search_again">Neu suchen</string>
+</resources>
